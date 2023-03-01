@@ -5,6 +5,7 @@ import {
   faVideo,
   faDesktop,
   faVideoSlash,
+  faPhone,
   faMicrophoneSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import ReactTooltip from "react-tooltip";
@@ -24,33 +25,47 @@ const MeetingFooter = (props) => {
     });
   };
 
-  const onVideoClick = () => {
-    setStreamState((currentState) => {
-      return {
-        ...currentState,
-        video: !currentState.video,
-      };
-    });
-  };
+  // const onVideoClick = () => {
+  //   setStreamState((currentState) => {
+  //     return {
+  //       ...currentState,
+  //       video: !currentState.video,
+  //     };
+  //   });
+  // };
 
-  const onScreenClick = () => {
-    props.onScreenClick(setScreenState);
-  };
 
-  const setScreenState = (isEnabled) => {
-    setStreamState((currentState) => {
-      return {
-        ...currentState,
-        screen: isEnabled,
-      };
-    });
-  };
+//   const onEndCall = () => {
+//     window.opener = null;
+//     window.open("", "_self");
+//     window.close();
+//   //   setStreamState((currentState) => {
+    
+//   //     return {
+//   //       ...currentState,
+//   //   };
+//   // });
+// };
+
+
+  // const onScreenClick = () => {
+  //   props.onScreenClick(setScreenState);
+  // };
+
+  // const setScreenState = (isEnabled) => {
+  //   setStreamState((currentState) => {
+  //     return {
+  //       ...currentState,
+  //       screen: isEnabled,
+  //     };
+  //   });
+  // };
   useEffect(() => {
     props.onMicClick(streamState.mic);
   }, [streamState.mic]);
-  useEffect(() => {
-    props.onVideoClick(streamState.video);
-  }, [streamState.video]);
+  // useEffect(() => {
+  //   props.onVideoClick(streamState.video);
+  // }, [streamState.video]);
   return (
     <div className="meeting-footer">
       <div
@@ -64,20 +79,22 @@ const MeetingFooter = (props) => {
         />
       </div>
       <div
-        className={"meeting-icons " + (!streamState.video ? "active" : "")}
-        data-tip={streamState.video ? "Hide Video" : "Show Video"}
-        onClick={onVideoClick}
+        className={"meeting-icons active"}
+        // + (!streamState.video ? "active" : "")}
+        data-tip={"EndCall"}
+        // onClick={onEndCall}
       >
-        <FontAwesomeIcon icon={!streamState.video ? faVideoSlash : faVideo} />
+        <FontAwesomeIcon icon={faPhone} />
+        {/* <FontAwesomeIcon icon={!streamState.video ? faVideoSlash : faVideo} /> */}
       </div>
-      <div
+      {/* <div
         className="meeting-icons"
         data-tip="Share Screen"
-        onClick={onScreenClick}
+        // onClick={onScreenClick}
         disabled={streamState.screen}
       >
         <FontAwesomeIcon icon={faDesktop} />
-      </div>
+      </div> */}
       <ReactTooltip />
     </div>
   );

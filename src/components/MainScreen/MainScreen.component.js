@@ -80,9 +80,9 @@ const MainScreen = (props) => {
 
       <div className="footer">
         <MeetingFooter
-          onScreenClick={onScreenClick}
+          // onScreenClick={onScreenClick}
           onMicClick={onMicClick}
-          onVideoClick={onVideoClick}
+          // onVideoClick={onVideoClick}
         />
       </div>
     </div>
